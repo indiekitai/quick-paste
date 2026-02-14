@@ -85,6 +85,18 @@ echo "Hello" | paste
 | `/api/pastes` | GET | List pastes |
 | `/api/paste/{id}` | DELETE | Delete paste |
 
+### 在线体验
+
+```bash
+# 创建代码片段
+curl -X POST https://p.indiekit.ai/api/paste \
+  -H "Content-Type: application/json" \
+  -d '{"content": "print(\"Hello IndieKit!\")", "language": "python"}'
+
+# 查看原始内容
+curl https://p.indiekit.ai/{id}/raw
+```
+
 ## Supported Languages
 
 Python, JavaScript, TypeScript, Go, Rust, SQL, JSON, YAML, Markdown, Bash, and 500+ more via Pygments.
