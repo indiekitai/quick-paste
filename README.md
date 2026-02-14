@@ -1,5 +1,8 @@
 # 📋 Quick Paste
 
+[![Python](https://img.shields.io/badge/python-3.11+-blue.svg)](https://www.python.org/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
+
 Self-hosted pastebin with syntax highlighting.
 
 自托管代码分享服务，支持语法高亮和阅后即焚。
