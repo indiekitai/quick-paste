@@ -1,5 +1,5 @@
 [project]
-name = "quick-paste"
+name = "indiekit-quick-paste"
 version = "0.1.0"
 description = "Self-hosted pastebin for code and text sharing"
 requires-python = ">=3.11"
