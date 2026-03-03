@@ -5,44 +5,42 @@
 [![Python](https://img.shields.io/badge/python-3.11+-blue.svg)](https://www.python.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 
-Self-hosted pastebin with syntax highlighting.
-
 自托管代码分享服务，支持语法高亮和阅后即焚。
 
-## Features
+## 功能
 
-- 🎨 语法高亮 (Pygments)
-- 🔥 阅后即焚 (burn after read)
+- 🎨 语法高亮（Pygments）
+- 🔥 阅后即焚（burn after read）
 - ⏰ 自动过期
 - 📝 支持任意文本/代码
 - 💾 文件存储，零依赖数据库
 
-## Quick Start
+## 快速开始
 
 ```bash
 cd /root/source/side-projects/quick-paste
 
-# Install
+# 安装依赖
 pip install fastapi uvicorn python-dotenv pygments
 
-# Configure
+# 配置
 cp .env.example .env
 
-# Run
+# 运行
 uvicorn src.main:app --port 8084
 ```
 
-## Usage
+## 使用
 
-### Create Paste
+### 创建代码片段
 
 ```bash
-# Simple paste
+# 简单粘贴
 curl -X POST http://localhost:8084/api/paste \
   -H "Content-Type: application/json" \
   -d '{"content": "print(\"Hello World\")", "language": "python"}'
 
-# With options
+# 带选项
 curl -X POST http://localhost:8084/api/paste \
   -H "Content-Type: application/json" \
   -d '{
@@ -54,20 +52,14 @@ curl -X POST http://localhost:8084/api/paste \
   }'
 ```
 
-### View Paste
+### 查看代码片段
 
-- **Highlighted**: `http://localhost:8084/{id}`
-- **Raw text**: `http://localhost:8084/{id}/raw`
+- **高亮显示**: `http://localhost:8084/{id}`
+- **原始文本**: `http://localhost:8084/{id}/raw`
 
-### CLI Usage
+### 命令行使用
 
 ```bash
-# Pipe directly
-cat script.py | curl -X POST http://localhost:8084/api/paste \
-  -H "Content-Type: application/json" \
-  -d @- --data-urlencode "content@-"
-
-# Or use a simple function
 paste() {
   curl -s -X POST http://localhost:8084/api/paste \
     -H "Content-Type: application/json" \
@@ -79,13 +71,13 @@ echo "Hello" | paste
 
 ## API
 
-| Endpoint | Method | Description |
-|----------|--------|-------------|
-| `/{id}` | GET | View with highlighting |
-| `/{id}/raw` | GET | Raw content |
-| `/api/paste` | POST | Create paste |
-| `/api/pastes` | GET | List pastes |
-| `/api/paste/{id}` | DELETE | Delete paste |
+| 端点 | 方法 | 描述 |
+|------|------|------|
+| `/{id}` | GET | 高亮查看 |
+| `/{id}/raw` | GET | 原始内容 |
+| `/api/paste` | POST | 创建代码片段 |
+| `/api/pastes` | GET | 列出所有片段 |
+| `/api/paste/{id}` | DELETE | 删除片段 |
 
 ### 在线体验
 
@@ -99,17 +91,17 @@ curl -X POST https://p.indiekit.ai/api/paste \
 curl https://p.indiekit.ai/{id}/raw
 ```
 
-## Supported Languages
+## 支持语言
 
-Python, JavaScript, TypeScript, Go, Rust, SQL, JSON, YAML, Markdown, Bash, and 500+ more via Pygments.
+Python、JavaScript、TypeScript、Go、Rust、SQL、JSON、YAML、Markdown、Bash 等 500+ 种语言（基于 Pygments）。
 
-## Data Storage
+## 数据存储
 
 ```
 data/
-├── index.json        # Paste metadata
+├── index.json        # 元数据索引
 └── pastes/
-    ├── abc12345      # Paste content files
+    ├── abc12345      # 代码片段文件
     └── ...
 ```
 
